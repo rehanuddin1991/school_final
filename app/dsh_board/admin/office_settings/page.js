@@ -9,11 +9,15 @@ export default function OfficeSettingsPage() {
   const [settings, setSettings] = useState([])
   const [form, setForm] = useState({
     id: null,
-    sarok_no: '',
-    notes: '',
-    union_name: '',
+     
+    school_name: '',
     upazila: '',
     district: '',
+    email: '',
+    website: '',
+    about: '',
+    contact: '',
+    headSpeech: '',
      
   })
 
@@ -45,11 +49,14 @@ export default function OfficeSettingsPage() {
         fetchSettings()
         setForm({
           id: null,
-          sarok_no: '',
-          notes: '',
-          union_name: '',
-          upazila: '',
-          district: '',
+          school_name: '',
+    upazila: '',
+    district: '',
+    email: '',
+    website: '',
+    about: '',
+    contact: '',
+    headSpeech: '',
            
         })
       } else toast.error('সেভ করতে সমস্যা হয়েছে')
@@ -71,11 +78,18 @@ export default function OfficeSettingsPage() {
   const handleEdit = (s) => {
     setForm({
       id: s.id,
-      sarok_no: s.sarok_no || '',
-      notes: s.notes || '',
-      union_name: s.union_name || '',
+       
+      
+      school_name: s.school_name || '',
       upazila: s.upazila || '',
       district: s.district || '',
+      email: s.email || '',
+      website: s.website || '',
+      about: s.about || '',
+      contact: s.contact || '',
+      headSpeech: s.headSpeech || ''
+
+      
        
     })
   }
@@ -86,27 +100,17 @@ export default function OfficeSettingsPage() {
 
       <form onSubmit={handleSubmit} className="bg-white border p-6 rounded-xl shadow space-y-4 mb-8">
         {/* স্মারক নং */}
-        <div>
-          <label className="font-semibold">স্মারক নং<span className="text-red-600 text-xl ">*</span></label>
-          <input
-            type="text"
-            value={form.sarok_no}
-            onChange={(e) => setForm({ ...form, sarok_no: e.target.value })}
-            className="border p-2 rounded w-full"
-            placeholder="৪৬.০০.৪৬৮০.০৭৬.২০২৫/"
-            required
-          />
-        </div>
+         
 
         {/* ইউনিয়ন নাম */}
         <div>
-          <label className="font-semibold">ইউনিয়নের নাম<span className="text-red-600 text-xl ">*</span></label>
+          <label className="font-semibold">প্রতিষ্ঠানের নাম<span className="text-red-600 text-xl ">*</span></label>
           <input
             type="text"
-            value={form.union_name}
-            onChange={(e) => setForm({ ...form, union_name: e.target.value })}
+            value={form.school_name}
+            onChange={(e) => setForm({ ...form, school_name: e.target.value })}
             className="border p-2 rounded w-full"
-            placeholder="১নং রামগড় ইউনিয়ন পরিষদ"  required
+            placeholder="রামগড় সরকারি উচ্চ বিদ্যালয়"  required
           />
         </div>
 
@@ -138,21 +142,46 @@ export default function OfficeSettingsPage() {
           <label className="font-semibold">ওয়েবসাইটের নাম:<span className="text-red-600 text-xl ">*</span></label>
           <input
             type="text"
-            value={form.notes}
-            onChange={(e) => setForm({ ...form, notes: e.target.value })}
+            value={form.website}
+            onChange={(e) => setForm({ ...form, website: e.target.value })}
             className="border p-2 rounded w-full"
-            placeholder="www.ramgarhup.khagracchari.gov.bd"  required
+            placeholder="www.rghs.edu.bd"  required
           />
         </div>
+
+         <div>
+          <label className="font-semibold">ই-মেইল:<span className="text-red-600 text-xl ">*</span></label>
+          <input
+            type="text"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            className="border p-2 rounded w-full"
+            placeholder="www.rghs.edu.bd"  required
+          />
+        </div>
+
+        <div>
+          <label className="font-semibold">যোগাযোগ:<span className="text-red-600 text-xl ">*</span></label>
+          <input
+            type="text"
+            value={form.contact}
+            onChange={(e) => setForm({ ...form, contact: e.target.value })}
+            className="border p-2 rounded w-full"
+            placeholder="address"  required
+          />
+        </div>
+
+          
 
          
 
         {/* টেক্সট এডিটর */}
-        {/* <div>
-          <label className="font-semibold">ওয়েবসাইটের নাম:</label>
+
+        <div>
+           <label className="font-semibold">আমাদের সম্পর্কে:<span className="text-red-600 text-xl ">*</span></label>
           <Editor
             apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
-            value={form.notes}
+            value={form.about}
             init={{
               height: 200,
               menubar: false,
@@ -161,9 +190,26 @@ export default function OfficeSettingsPage() {
               toolbar:
                 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | removeformat',
             }}
-            onEditorChange={(content) => setForm({ ...form, notes: content })}
+            onEditorChange={(content) => setForm({ ...form, about: content })}
           />
-        </div> */}
+        </div>
+
+        <div>
+          <label className="font-semibold">প্রধান শিক্ষকের বানী:</label>
+          <Editor
+            apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
+            value={form.headSpeech}
+            init={{
+              height: 200,
+              menubar: false,
+              directionality: 'ltr',
+              plugins: 'lists link code preview',
+              toolbar:
+                'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | removeformat',
+            }}
+            onEditorChange={(content) => setForm({ ...form, headSpeech: content })}
+          />
+        </div>
 
         <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
           {form.id ? 'আপডেট করুন' : 'সেভ করুন'}
@@ -173,12 +219,16 @@ export default function OfficeSettingsPage() {
             type="button"
             onClick={() => setForm({
               id: null,
-              sarok_no: '',
-              notes: '',
-              union_name: '',
+              
+              website: '',
+              email: '',
+              contact: '',
+              about: '',
+              headSpeech: '',
+              school_name: '',
               upazila: '',
-              district: '',
-              letter_count: ''
+              district: ''
+              
             })}
             className="w-full mt-2 bg-gray-400 text-white py-2 rounded"
           >
@@ -192,12 +242,12 @@ export default function OfficeSettingsPage() {
         <table className="w-full text-sm border">
           <thead className="bg-blue-100">
             <tr>
-              <th className="border p-2">স্মারক নং</th>
-              <th className="border p-2">ইউনিয়ন</th>
+              
+              <th className="border p-2">স্কুল</th>
               <th className="border p-2">উপজেলা</th>
               <th className="border p-2">জেলা</th>
-              <th className="border p-2">চিঠি সংখ্যা</th>
-              <th className="border p-2">নোটস</th>
+              <th className="border p-2">ইমেইল</th>
+              
               <th className="border p-2">অ্যাকশন</th>
             </tr>
           </thead>
@@ -211,14 +261,12 @@ export default function OfficeSettingsPage() {
             )}
             {settings.map((s) => (
               <tr key={s.id}>
-                <td className="border p-2">{s.sarok_no || '-'}</td>
-                <td className="border p-2">{s.union_name || '-'}</td>
+                 
+                <td className="border p-2">{s.school_name || '-'}</td>
                 <td className="border p-2">{s.upazila || '-'}</td>
                 <td className="border p-2">{s.district || '-'}</td>
-                <td className="border p-2">{s.letter_count || '-'}</td>
-                <td className="border p-2">
-                  <div dangerouslySetInnerHTML={{ __html: s.notes || '-' }} />
-                </td>
+                <td className="border p-2">{s.email || '-'}</td>
+                
                 <td className="border p-2 space-x-2">
                   <button onClick={() => handleEdit(s)} className="text-blue-600">✏️</button>
                   <button onClick={() => handleDelete(s.id)} className="text-red-600">🗑</button>

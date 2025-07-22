@@ -7,7 +7,7 @@ export default function EmployeesPage() {
     name: "",
     mobile: "",
     email: "",
-    designation: "CHAIRMAN",
+    designation: "",
     order: "",
     notes: "",
     imageUrl: "",   // <-- ImageBB URL রাখার জন্য নতুন ফিল্ড
@@ -97,7 +97,7 @@ export default function EmployeesPage() {
           name: "",
           mobile: "",
           email: "",
-          designation: "CHAIRMAN",
+          designation: "শিক্ষক",
           order: "",
           notes: "",
           imageUrl: "",
@@ -144,7 +144,7 @@ export default function EmployeesPage() {
   className="bg-gradient-to-br from-white via-green-50 to-green-100 p-8 rounded-2xl shadow-2xl border border-green-200 mb-8 transition-all duration-300 hover:shadow-green-200/50"
 >
   <h2 className="text-3xl font-extrabold mb-6 text-green-800 drop-shadow-md">
-    {editingId ? "✏️ আপডেট কর্মকর্তা" : "📝 নতুন কর্মকর্তা যোগ করুন"}
+    {editingId ? "✏️ আপডেট কর্মকর্তা" : "📝 নতুন কর্মকর্তা/কর্মচারী যোগ করুন"}
   </h2>
 
   {/* নাম */}
@@ -182,15 +182,24 @@ export default function EmployeesPage() {
     onChange={(e) => setForm({ ...form, designation: e.target.value })}
     className="w-full p-3 mb-4 border border-green-200 rounded-xl focus:ring-2 focus:ring-green-400 focus:outline-none shadow-sm transition-all duration-200"
   >
-    <option value="OFFICER_IN_CHARGE">প্রশাসক</option>
-    <option value="CHAIRMAN">চেয়ারম্যান</option>
-    <option value="ADMINISTRATIVE_OFFICER">প্রশাসনিক কর্মকর্তা</option>
-    <option value="ACCOUNTANT_COMPUTER_OPERATOR">
-      হিসাব সহকারী কাম কম্পিউটার অপারেটর
+    <option value="প্রধান শিক্ষক">প্রধান শিক্ষক</option>
+    <option value="প্রধান শিক্ষক(ভারপ্রাপ্ত)">প্রধান শিক্ষক(ভারপ্রাপ্ত)</option>
+    <option value="সহকারী প্রধান শিক্ষক">সহকারী প্রধান শিক্ষক</option>
+    <option value="সহকারী শিক্ষক">সহকারী শিক্ষক</option>
+    <option value="অধ্যক্ষ">অধ্যক্ষ</option>
+    <option value="সহকারী অধ্যক্ষ">সহকারী অধ্যক্ষ</option>
+    <option value="লাইব্রেরিয়ান">
+      লাইব্রেরিয়ান
     </option>
-    <option value="UP_MEMBER">মেম্বার</option>
-    <option value="GRAM_POLICE">গ্রাম পুলিশ</option>
+    <option value="ল্যাব সহকারী">ল্যাব সহকারী</option>
+    <option value="ক্যাশিয়ার / হিসাবরক্ষক">ক্যাশিয়ার / হিসাবরক্ষক</option>
+    <option value="অফিস সহায়ক">অফিস সহায়ক</option>
+    <option value="অফিস সহকারী কাম-কম্পিউটার অপারেটর">অফিস সহকারী কাম-কম্পিউটার অপারেটর</option>
+    <option value="অফিস সহকারী">অফিস সহকারী</option>
+    <option value="পিয়ন">পিয়ন </option>
+    <option value="মালী  ">মালী </option>
     <option value="OTHERS">অন্যান্য</option>
+     
   </select>
 
   {/* ক্রম */}
