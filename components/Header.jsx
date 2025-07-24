@@ -22,12 +22,13 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-[cadetblue] text-white flex justify-between items-center px-4 py-6 rounded-b-2xl shadow-[0_4px_15px_rgba(0,0,0,0.2)]">
+    <header className="bg-[darkslateblue] text-white flex justify-between items-center 
+    px-4 py-4 rounded-b-2xl shadow-[0_4px_15px_rgba(0,0,0,0.2)]">
       {/* ✅ Logo & Title */}
       <div className="flex items-center space-x-3">
         <Link href="/">
           <img
-            src="/images/logo.jpg"
+            src="/images/logo.png"
             alt="Logo"
             className="h-12 w-12 rounded-full shadow-md border-2 border-white"
           />
@@ -72,7 +73,7 @@ export default function Header() {
           লগইন
         </Link>
         <Link
-          href="/register"
+          href="/"
           className="bg-green-400 text-black px-4 py-1.5 rounded-lg shadow-md hover:bg-green-300 transition-all duration-300"
         >
           রেজিস্টার

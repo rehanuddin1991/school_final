@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Smart Union",
-  description: "Union Parishad",
+  title: "Smart School",
+  description: "School",
 };
 
 export default function RootLayout({ children }) {
